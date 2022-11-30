@@ -313,7 +313,7 @@ with tab2:
         #adding the trace for Moving average
         fig.add_trace(go.Scatter(x=df['Date'], 
                                  y = df['Moving_AVG'], 
-                                 line = dict(color = 'blue', width = 1), 
+                                 line = dict(color = '#FF5F1F', width = 1), 
                                  name = 'Moving Average',
                                  connectgaps=True))
         
@@ -352,7 +352,7 @@ with tab2:
         #adding the trace for Moving average
         fig.add_trace(go.Scatter(x=df['Date'], 
                                  y = df['Moving_AVG'], 
-                                 line = dict(color = 'blue', width = 1), 
+                                 line = dict(color = '#FF5F1F', width = 1), 
                                  name = 'Moving Average',
                                  connectgaps=True))
         
