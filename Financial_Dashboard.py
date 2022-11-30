@@ -74,7 +74,7 @@ with col2:
 col3.metric("Current Price", round(tick.info['currentPrice'],2), round((tick.info['currentPrice'] - tick.info['previousClose']),2))
 
 #structuring the page into 5 tabs
-tab1, tab2, tab3, tab4, tab5 = st.tabs(["Summary", "Chart", "Financials", "Monte Carlo Simulation", "Analysis"])
+tab1, tab2, tab3, tab4, tab5 = st.tabs(["Summary", "Chart", "Financials", "MonteCarlo Simulation", "Analysis"])
     
 
 # =============================================================================
@@ -490,8 +490,7 @@ with tab4:
     plt.legend(['Current stock price is: ' + str(np.round(close_price[-1], 2))])
     ax.get_legend().legendHandles[0].set_color('red')
     
-    #displaying the simulation
-    st.pyplot(fig)
+    st.pyplot(fig, use_container_width=True)
             
     
 # =============================================================================
