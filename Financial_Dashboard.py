@@ -27,14 +27,14 @@ import plotly.graph_objects as go
 
 #setting the page configuration to wide
 st.set_page_config(page_title='FP_Shashank_Gollapalli',layout="wide")
-#st.markdown(:flag-in:, unsafe_allow_html=False)
+#st.write(':flag-in:')
 
 # =============================================================================
 # Page layout and Reading-in data and taking the input from the User
 # =============================================================================
 
 #adding a title
-st.markdown("<h1 style='text-align: center; color: #430297;'>Yahoo! Finance</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; color: #430297;'>Financial! Dashboard</h1>", unsafe_allow_html=True)
 
 #scraping Wikipedia for the S&P 500 quotes
 ticker_init = pd.read_html('https://en.wikipedia.org/wiki/List_of_S%26P_500_companies')[0]['Symbol']
@@ -409,25 +409,25 @@ with tab3:
             financials = tick.financials.fillna('No Info')
             st.table(financials)
         else:
-            financials = tick.quarterly_financials
+            financials = tick.quarterly_financials.fillna('No Info')
             st.table(financials)
         
     with tab2:
         #creating if statement to output the annual or quaterly report
         if time == 'Annual':
-            balance = tick.balance_sheet
+            balance = tick.balance_sheet.fillna('No Info')
             st.table(balance)
         else:
-            balance = tick.quarterly_balance_sheet
+            balance = tick.quarterly_balance_sheet.fillna('No Info')
             st.table(balance)   
        
     with tab3:
         #creating if statement to output the annual or quaterly report
         if time == 'Annual':
-            cash = tick.cashflow
+            cash = tick.cashflow.fillna('No Info')
             st.table(cash)
         else:
-            cash = tick.quarterly_cashflow
+            cash = tick.quarterly_cashflow.fillna('No Info')
             st.table(cash)
             
             
@@ -511,8 +511,6 @@ with tab5:
     reco_upper = reco.upper()
     st.subheader('Analyst Recommendation: ' + str(reco_upper) + "!")
     
-    
-    
     #creating a download option for the user
     #creating dataframe
     analysis = tick.recommendations
@@ -537,7 +535,6 @@ with tab5:
         st.write('Related tickers to ' + str(tick.info['longName']))
         temp2 = news['relatedTickers']
         st.dataframe(temp2, use_container_width = True)
-    
     
     #fun elements for the page basis the recommendation key
     if reco == 'hold':
