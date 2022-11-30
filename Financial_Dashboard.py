@@ -263,15 +263,15 @@ with tab2:
     with col4:
         #creating exapander for interval selection
         with st.expander('Interval'):
-            interval = st.radio("Choose the interval", ('1 Day', '1 Month', '1 Year'),  horizontal=True, label_visibility= 'collapsed')
+            interval = st.radio("Choose the interval", ('1 Day', '1 Month', '3 Months'),  horizontal=True, label_visibility= 'collapsed')
             
         #if statement for action basis the selected interval
         if interval == '1 Day':
             inter = '1d'
-        else:
+        elif interval == '1 Month':
             inter = '1mo'
-        #else:
-            #inter = '1Y'
+        else:
+            inter = '3mo'
     
     #dataframes with quote data
     #dataframe for pre-selected duration and intervals
