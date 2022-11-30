@@ -1,0 +1,9 @@
+numpy
+pandas
+matplotlib
+datetime
+streamlit
+yfinance
+numerize
+plotly
+yahoo_fin
