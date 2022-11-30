@@ -153,8 +153,8 @@ with tab1:
         
         #creating dataframe which pull ticker data with iput duration from the user
         stock_price = yf.Ticker(selected_symb).history(period=dur,interval="1d")
-        chart_data = stock_price[['Close', 'Volume']]
-        chart_data['Volume'] = chart_data['Volume']/100000
+        chart_data = stock_price[['Close', 'Volume']].rename(columns = {'Volume' : 'Volume in millions', 'Close':'Close Price'})
+        chart_data['Volume in millions'] = chart_data['Volume in millions']/100000
         
         #plotting the chart for the above created dataframe
         st.area_chart(chart_data)
@@ -308,7 +308,7 @@ with tab2:
         fig.add_trace(go.Bar(x=df['Date'], 
                              y= (df['Volume']/1000000), 
                              marker_color = colors, 
-                             name = 'Volume'))
+                             name = 'Volume in millions'))
         
         #adding the trace for Moving average
         fig.add_trace(go.Scatter(x=df['Date'], 
@@ -347,7 +347,7 @@ with tab2:
         fig.add_trace(go.Bar(x=df['Date'], 
                              y= (df['Volume']/1000000), 
                              marker_color = colors, 
-                             name = 'Volume'))
+                             name = 'Volume in millions'))
         
         #adding the trace for Moving average
         fig.add_trace(go.Scatter(x=df['Date'], 
@@ -367,7 +367,7 @@ with tab2:
     with col5:
         #creating exapander for chart type selection
         with st.expander('Chart Type'):
-            chart_type = st.radio('Chart Type', ('Line', 'Candle'), label_visibility= 'collapsed')
+            chart_type = st.radio('Chart Type', ('Line', 'CandleStick'), label_visibility= 'collapsed')
     
     #if statement to display charts basis the options selected
     if chart_type == 'Line':
@@ -375,7 +375,7 @@ with tab2:
             LineChart(stock_info_cust)
         else:
             LineChart(stock_info)
-    elif chart_type == 'Candle':
+    elif chart_type == 'CandleStick':
         if start != end:
             CandleChart(stock_info_cust)
         else:
