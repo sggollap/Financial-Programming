@@ -490,7 +490,7 @@ with tab4:
     plt.legend(['Current stock price is: ' + str(np.round(close_price[-1], 2))])
     ax.get_legend().legendHandles[0].set_color('red')
     
-    st.pyplot(fig, use_container_width=True)
+    st.pyplot(fig)
             
     
 # =============================================================================
