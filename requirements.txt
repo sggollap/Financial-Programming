@@ -7,3 +7,4 @@ yfinance
 numerize
 plotly
 yahoo_fin
+html5lib
